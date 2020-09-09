@@ -31,8 +31,9 @@ describe Travis::Build::Script::Matlab, :sexp do
 
   context 'it sets up MATLAB' do
     it 'by calling the ephemeral installer script' do
-      should include_sexp [:raw, "wget -qO- --retry-connrefused #{installer}"\
-                           ' | sudo -E bash -s -- --release $TRAVIS_MATLAB_VERSION', assert: true]
+      should include_sexp [:raw, "wget -qO- --retry-connrefused #{installer}" \
+                           ' | sudo -E bash -s -- --release $TRAVIS_MATLAB_VERSION' \
+                           ' --error-on-activation-failure', assert: true]
     end
   end
 

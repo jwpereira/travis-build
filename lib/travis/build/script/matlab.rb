@@ -37,7 +37,8 @@ module Travis
             # Invoke the ephemeral MATLAB installer that will make a MATLAB available
             # on the system PATH
             sh.raw "wget -qO- --retry-connrefused #{MATLAB_INSTALLER_LOCATION}" \
-                  ' | sudo -E bash -s -- --release $TRAVIS_MATLAB_VERSION'
+                  ' | sudo -E bash -s -- --release $TRAVIS_MATLAB_VERSION' \
+                  ' --error-on-activation-failure'
           end
         end
 
