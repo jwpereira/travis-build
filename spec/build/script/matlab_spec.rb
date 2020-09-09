@@ -26,7 +26,7 @@ describe Travis::Build::Script::Matlab, :sexp do
 
   it 'configures runtime dependencies' do
     should include_sexp [:raw, "wget -qO- --retry-connrefused #{helper}"\
-                         ' | sudo -E bash -s -- $TRAVIS_MATLAB_VERSION', assert: true]
+                         ' | travis_retry sudo -E bash -s -- $TRAVIS_MATLAB_VERSION', assert: true]
   end
 
   context 'it sets up MATLAB' do
